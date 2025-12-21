@@ -1,3 +1,4 @@
 re
 pickle
 pandas
+hazm
