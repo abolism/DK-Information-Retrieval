@@ -1,0 +1,236 @@
+Predictions file: predictions_top10.csv
+Sample file: data\sample_submission.csv
+
+Sample rows total: 9981
+Predictions rows total: 9961
+
+Match counts by strategy:
+  exact: 9961
+
+Total matched: 9961
+Total unmatched (will be empty rows in predictions_aligned.csv): 20
+
+First 200 report lines:
+ROW 0: matched strategy=exact sample_query_repr='ست تشک خواب مسافرتی نوزادی' pred_idx=0
+ROW 1: matched strategy=exact sample_query_repr='ضد آفتاب بی رنگ لاروش' pred_idx=1
+ROW 2: matched strategy=exact sample_query_repr='4060 8 gig' pred_idx=2
+ROW 3: matched strategy=exact sample_query_repr='6 iphone' pred_idx=3
+ROW 4: matched strategy=exact sample_query_repr='کاور تبلت       A515' pred_idx=4
+ROW 5: matched strategy=exact sample_query_repr=', شومیز' pred_idx=5
+ROW 6: matched strategy=exact sample_query_repr='2018A750گوشی' pred_idx=6
+ROW 7: matched strategy=exact sample_query_repr='3nuovo espresso' pred_idx=7
+ROW 8: matched strategy=exact sample_query_repr='airpod pro 2 type c' pred_idx=8
+ROW 9: matched strategy=exact sample_query_repr='hermitage gardenاسانس خوشبو کننده' pred_idx=9
+ROW 10: matched strategy=exact sample_query_repr='stylish ماوس' pred_idx=10
+ROW 11: matched strategy=exact sample_query_repr='اتصال چهار راهی' pred_idx=11
+ROW 12: matched strategy=exact sample_query_repr='خودکارowner' pred_idx=12
+ROW 13: matched strategy=exact sample_query_repr='دستگاه موفر' pred_idx=13
+ROW 14: matched strategy=exact sample_query_repr='روتختی مهمان' pred_idx=14
+ROW 15: matched strategy=exact sample_query_repr='سامسونگ a35' pred_idx=15
+ROW 16: matched strategy=exact sample_query_repr='شیافمی تیرپاد' pred_idx=16
+ROW 17: matched strategy=exact sample_query_repr='هویه ۲۰ وان' pred_idx=17
+ROW 18: matched strategy=exact sample_query_repr='چشب نواری واشی ترح کیوت و برگه یاداشت' pred_idx=18
+ROW 19: matched strategy=exact sample_query_repr='کاغذ پیچیدن  سیگار با فیلتر' pred_idx=19
+ROW 20: matched strategy=exact sample_query_repr='کاور گوشی سامسونگnote9' pred_idx=20
+ROW 21: matched strategy=exact sample_query_repr='گوشی Rdm' pred_idx=21
+ROW 22: matched strategy=exact sample_query_repr='A06' pred_idx=22
+ROW 23: matched strategy=exact sample_query_repr='AWG' pred_idx=23
+ROW 24: matched strategy=exact sample_query_repr='Air Macbook' pred_idx=24
+ROW 25: matched strategy=exact sample_query_repr='Casio G-shock' pred_idx=25
+ROW 26: matched strategy=exact sample_query_repr='Ga_2200' pred_idx=26
+ROW 27: matched strategy=exact sample_query_repr='M33Gشارژر گوشی سامسونگ مدل 5' pred_idx=27
+ROW 28: matched strategy=exact sample_query_repr='Oxford Elementary Learners Dictionary' pred_idx=28
+ROW 29: matched strategy=exact sample_query_repr='Redmi not13 pro کاور' pred_idx=29
+ROW 30: matched strategy=exact sample_query_repr='Redmi12گوشی' pred_idx=30
+ROW 31: matched strategy=exact sample_query_repr='Steelseries arctis' pred_idx=31
+ROW 32: matched strategy=exact sample_query_repr='TP4056-TYPE C' pred_idx=32
+ROW 33: matched strategy=exact sample_query_repr='ZenBook Pro 14 Duo OLED UX8402ZE-' pred_idx=33
+ROW 34: matched strategy=exact sample_query_repr='e99' pred_idx=34
+ROW 35: matched strategy=exact sample_query_repr='enhypen' pred_idx=35
+ROW 36: matched strategy=exact sample_query_repr='g72گوشی موتورولا' pred_idx=36
+ROW 37: matched strategy=exact sample_query_repr='iphone 13 pro max512' pred_idx=37
+ROW 38: matched strategy=exact sample_query_repr='tab s7' pred_idx=38
+ROW 39: matched strategy=exact sample_query_repr='آبهویج ساز صنعتی' pred_idx=39
+ROW 40: matched strategy=exact sample_query_repr='آبياري قطره اي' pred_idx=40
+ROW 41: matched strategy=exact sample_query_repr='آینه جک جی ۵' pred_idx=41
+ROW 42: matched strategy=exact sample_query_repr='ادابتور گوشی s24' pred_idx=42
+ROW 43: matched strategy=exact sample_query_repr='ارزان تری لباس زیر' pred_idx=43
+ROW 44: matched strategy=exact sample_query_repr='اره فارسی ۲۵۳۴' pred_idx=44
+ROW 45: matched strategy=exact sample_query_repr='ارگنایزر رومیزی' pred_idx=45
+ROW 46: matched strategy=exact sample_query_repr='استاد بازارها' pred_idx=46
+ROW 47: matched strategy=exact sample_query_repr='استرچ زنانه' pred_idx=47
+ROW 48: matched strategy=exact sample_query_repr='استم سل پرو' pred_idx=48
+ROW 49: matched strategy=exact sample_query_repr='استیج ابیعروسک' pred_idx=49
+ROW 50: matched strategy=exact sample_query_repr='استیل درب سندوق عقب پراید' pred_idx=50
+ROW 51: matched strategy=exact sample_query_repr='استیل پلاک' pred_idx=51
+ROW 52: matched strategy=exact sample_query_repr='اسم عرفان اکبری' pred_idx=52
+ROW 53: matched strategy=exact sample_query_repr='اسپرسوساز قوری' pred_idx=53
+ROW 54: matched strategy=exact sample_query_repr='اسپری طپاسبت' pred_idx=54
+ROW 55: matched strategy=exact sample_query_repr='اسپری کرید اونتوس' pred_idx=55
+ROW 56: matched strategy=exact sample_query_repr='اسپیکرWs887' pred_idx=56
+ROW 57: matched strategy=exact sample_query_repr='ال آرژنین خلق اید' pred_idx=57
+ROW 58: matched strategy=exact sample_query_repr='اندیشه اسلامی۱' pred_idx=58
+ROW 59: matched strategy=exact sample_query_repr='انیمه oshi no ko' pred_idx=59
+ROW 60: matched strategy=exact sample_query_repr='انیمه سولو لولینگ تیشرت' pred_idx=60
+ROW 61: matched strategy=exact sample_query_repr='اپل واچ بچه کانه' pred_idx=61
+ROW 62: matched strategy=exact sample_query_repr='اچار الن jet' pred_idx=62
+ROW 63: matched strategy=exact sample_query_repr='ایرپاد Sony WF-C500' pred_idx=63
+ROW 64: matched strategy=exact sample_query_repr='ایکس باکس 360Camera' pred_idx=64
+ROW 65: matched strategy=exact sample_query_repr='باتری برای تبلت' pred_idx=65
+ROW 66: matched strategy=exact sample_query_repr='بارسلونا تگ' pred_idx=66
+ROW 67: matched strategy=exact sample_query_repr='باطری قلم' pred_idx=67
+ROW 68: matched strategy=exact sample_query_repr='بانی بگ' pred_idx=68
+ROW 69: matched strategy=exact sample_query_repr='بدنه کولر' pred_idx=69
+ROW 70: matched strategy=exact sample_query_repr='برش میلگرد' pred_idx=70
+ROW 71: matched strategy=exact sample_query_repr='برچسبژله ای خودرو' pred_idx=71
+ROW 72: matched strategy=exact sample_query_repr='بلن گوواکی تاکی' pred_idx=72
+ROW 73: matched strategy=exact sample_query_repr='بلورمحک' pred_idx=73
+ROW 74: matched strategy=exact sample_query_repr='بند ساعت هوشمند هوآوی مدل GT 4 46mm' pred_idx=74
+ROW 75: matched strategy=exact sample_query_repr='بی تی آی پد بهداشتی  بی تی آی' pred_idx=75
+ROW 76: matched strategy=exact sample_query_repr='تابستانی زنانه' pred_idx=76
+ROW 77: matched strategy=exact sample_query_repr='تبلت سامسونگ a' pred_idx=77
+ROW 78: matched strategy=exact sample_query_repr='تبلته  ایفون م' pred_idx=78
+ROW 79: matched strategy=exact sample_query_repr='تجهیزات اسب   اسب' pred_idx=79
+ROW 80: matched strategy=exact sample_query_repr='تجهیزات جانبی' pred_idx=80
+ROW 81: matched strategy=exact sample_query_repr='ترشیسیر' pred_idx=81
+ROW 82: matched strategy=exact sample_query_repr='تفنگ ترقه ای کلاش' pred_idx=82
+ROW 83: matched strategy=exact sample_query_repr='تفنگ تیر بار' pred_idx=83
+ROW 84: matched strategy=exact sample_query_repr='تلوبگیزیون' pred_idx=84
+ROW 85: matched strategy=exact sample_query_repr='تلویزیون' pred_idx=85
+ROW 86: matched strategy=exact sample_query_repr='تیغه برف پاکن مدل ۲۰۶' pred_idx=86
+ROW 87: matched strategy=exact sample_query_repr='جارو برقی پاکتین ۳۶۰۰' pred_idx=87
+ROW 88: matched strategy=exact sample_query_repr='جاسووچی عروسک' pred_idx=88
+ROW 89: matched strategy=exact sample_query_repr='جز دو sar' pred_idx=89
+ROW 90: matched strategy=exact sample_query_repr='جی بی ال۳۱۰' pred_idx=90
+ROW 91: matched strategy=exact sample_query_repr='حباب ساز مجلسی' pred_idx=91
+ROW 92: matched strategy=exact sample_query_repr='حرارتی mini' pred_idx=92
+ROW 93: matched strategy=exact sample_query_repr='حروف انگلیسی ترئینی اینه ای' pred_idx=93
+ROW 94: matched strategy=exact sample_query_repr='دئودرانتultra max' pred_idx=94
+ROW 95: matched strategy=exact sample_query_repr='دریل  ماکیتا کناف برقی' pred_idx=95
+ROW 96: matched strategy=exact sample_query_repr='دریل برقی آچاربکس' pred_idx=96
+ROW 97: matched strategy=exact sample_query_repr='دستگاه التراسونیک موش' pred_idx=97
+ROW 98: matched strategy=exact sample_query_repr='دستگاه سوسک کش Dr' pred_idx=98
+ROW 99: matched strategy=exact sample_query_repr='دستگاه واقعیت مجازی برای بازی' pred_idx=99
+ROW 100: matched strategy=exact sample_query_repr='دسگاه چسب حرارتی' pred_idx=100
+ROW 101: matched strategy=exact sample_query_repr='دمنوش ساز' pred_idx=101
+ROW 102: matched strategy=exact sample_query_repr='دوربین فیلم برداری دست دوم' pred_idx=102
+ROW 103: matched strategy=exact sample_query_repr='دیسک بازی اسنورانر ps4' pred_idx=103
+ROW 104: matched strategy=exact sample_query_repr='رنگ هما اکریلیک قهوه ای' pred_idx=104
+ROW 105: matched strategy=exact sample_query_repr='روغن موتور ماشین پرتکس' pred_idx=105
+ROW 106: matched strategy=exact sample_query_repr='روی فرمان غربیلک قدیم' pred_idx=106
+ROW 107: matched strategy=exact sample_query_repr='رگبار' pred_idx=107
+ROW 108: matched strategy=exact sample_query_repr='ریزش مژ' pred_idx=108
+ROW 109: matched strategy=exact sample_query_repr='زنجیل نردبان' pred_idx=109
+ROW 110: matched strategy=exact sample_query_repr='زیلومسافرتی' pred_idx=110
+ROW 111: matched strategy=exact sample_query_repr='ساعت هوشمند سه عددی' pred_idx=111
+ROW 112: matched strategy=exact sample_query_repr='ست جاپای هندا' pred_idx=112
+ROW 113: matched strategy=exact sample_query_repr='ستل آشغال' pred_idx=113
+ROW 114: matched strategy=exact sample_query_repr='سوریکاوا طلایی' pred_idx=114
+ROW 115: matched strategy=exact sample_query_repr='سوزن شبهه قالی' pred_idx=115
+ROW 116: matched strategy=exact sample_query_repr='سیلندر قفل نولان' pred_idx=116
+ROW 117: matched strategy=exact sample_query_repr='سیلیکونیNokia g21' pred_idx=117
+ROW 118: matched strategy=exact sample_query_repr='شارژر  دی واری67وات' pred_idx=118
+ROW 119: matched strategy=exact sample_query_repr='شلوار و لباس متور کراسی' pred_idx=119
+ROW 120: matched strategy=exact sample_query_repr='شومیز \u200cزنانه سفید' pred_idx=120
+ROW 121: matched strategy=exact sample_query_repr='شیشه اتومبیل' pred_idx=121
+ROW 122: matched strategy=exact sample_query_repr='صندلی خودرو مدل f9 مناسب برای ال90' pred_idx=122
+ROW 123: matched strategy=exact sample_query_repr='صندلی دندانپزشکی' pred_idx=123
+ROW 124: matched strategy=exact sample_query_repr='طی' pred_idx=124
+ROW 125: matched strategy=exact sample_query_repr='ظروف سرامیک خام' pred_idx=125
+ROW 126: matched strategy=exact sample_query_repr='عروسک بی\u200cبی' pred_idx=126
+ROW 127: matched strategy=exact sample_query_repr='عروسک مامی لنگ دراز' pred_idx=127
+ROW 128: matched strategy=exact sample_query_repr='عصای جادویی شعبده بازی' pred_idx=128
+ROW 129: matched strategy=exact sample_query_repr='عطرگرید اونوس' pred_idx=129
+ROW 130: matched strategy=exact sample_query_repr='عقاب شارژی که پرواز میکنه' pred_idx=130
+ROW 131: matched strategy=exact sample_query_repr='عکاسی کیلیپسی' pred_idx=131
+ROW 132: matched strategy=exact sample_query_repr='عینک باترفلای' pred_idx=132
+ROW 133: matched strategy=exact sample_query_repr='عینک کودک' pred_idx=133
+ROW 134: matched strategy=exact sample_query_repr='غذای کودک صبحانه' pred_idx=134
+ROW 135: matched strategy=exact sample_query_repr='غذای کپور' pred_idx=135
+ROW 136: matched strategy=exact sample_query_repr='فلش vicco' pred_idx=136
+ROW 137: matched strategy=exact sample_query_repr='فن ساز مژه' pred_idx=137
+ROW 138: matched strategy=exact sample_query_repr='فیلتر صافی بنزین ال90' pred_idx=138
+ROW 139: matched strategy=exact sample_query_repr='فیلتر ورودی کولر آبی' pred_idx=139
+ROW 140: matched strategy=exact sample_query_repr='فیلتر کف شور' pred_idx=140
+ROW 141: matched strategy=exact sample_query_repr='قاب  گوشی سامسونگ A12' pred_idx=141
+ROW 142: matched strategy=exact sample_query_repr='قاب POCO X3 زنجیر دار' pred_idx=142
+ROW 143: matched strategy=exact sample_query_repr='قاب بسکتبال poco x4' pred_idx=143
+ROW 144: matched strategy=exact sample_query_repr='قاب دخترانه گوشی a23' pred_idx=144
+ROW 145: matched strategy=exact sample_query_repr='قاب روی ساب' pred_idx=145
+ROW 146: matched strategy=exact sample_query_repr='قاب گوشی شیائومی m6 pro' pred_idx=146
+ROW 147: matched strategy=exact sample_query_repr='قاب گوشی شیایومی مدل poco f5' pred_idx=147
+ROW 148: matched strategy=exact sample_query_repr='قاب گوشی پوکو ایکس تری فوتبالی' pred_idx=148
+ROW 149: matched strategy=exact sample_query_repr='قاب ۱۲۸۰' pred_idx=149
+ROW 150: matched strategy=exact sample_query_repr='لباس ابر قهرمانی' pred_idx=150
+ROW 151: matched strategy=exact sample_query_repr='لباس جودو اصل' pred_idx=151
+ROW 152: matched strategy=exact sample_query_repr='لباس متور کراسی' pred_idx=152
+ROW 153: matched strategy=exact sample_query_repr='لباسشویی اتوماتیک مارک کوروپ' pred_idx=153
+ROW 154: matched strategy=exact sample_query_repr='لنز دوربین گوشی موبایل موتورولا مدل Edge 40' pred_idx=154
+ROW 155: matched strategy=exact sample_query_repr='لوازم التحریر  مدرسه فانتزی هرزان' pred_idx=155
+ROW 156: matched strategy=exact sample_query_repr='لوازم جانبی ساعت هوشمند' pred_idx=156
+ROW 157: matched strategy=exact sample_query_repr='لوازم جانبی گاز' pred_idx=157
+ROW 158: matched strategy=exact sample_query_repr='لپ تاپ 10اینچ' pred_idx=158
+ROW 159: matched strategy=exact sample_query_repr='لیسا خواننده' pred_idx=159
+ROW 160: matched strategy=exact sample_query_repr='ماریو سوپر' pred_idx=160
+ROW 161: matched strategy=exact sample_query_repr='ماکت آفرود' pred_idx=161
+ROW 162: matched strategy=exact sample_query_repr='ماگ مائده' pred_idx=162
+ROW 163: matched strategy=exact sample_query_repr='محافظ note10' pred_idx=163
+ROW 164: matched strategy=exact sample_query_repr='مداد جونگ کوک' pred_idx=164
+ROW 165: matched strategy=exact sample_query_repr='مدال نقره مردانه' pred_idx=165
+ROW 166: matched strategy=exact sample_query_repr='مدل دیواری شب خواب گرد' pred_idx=166
+ROW 167: matched strategy=exact sample_query_repr='مهشکن پراید' pred_idx=167
+ROW 168: matched strategy=exact sample_query_repr='موبایل اپل ۱۵' pred_idx=168
+ROW 169: matched strategy=exact sample_query_repr='موبایل سامسونگ a12' pred_idx=169
+ROW 170: matched strategy=exact sample_query_repr='مگنتروبیک' pred_idx=170
+ROW 171: matched strategy=exact sample_query_repr='میز ارایشی' pred_idx=171
+ROW 172: matched strategy=exact sample_query_repr='نخل آمریکایی' pred_idx=172
+ROW 173: matched strategy=exact sample_query_repr='نرم کننده مو بیول' pred_idx=173
+ROW 174: matched strategy=exact sample_query_repr='نمک بدن بایو اکو' pred_idx=174
+ROW 175: matched strategy=exact sample_query_repr='نور رقص' pred_idx=175
+ROW 176: matched strategy=exact sample_query_repr='نگهدارنده 3d market' pred_idx=176
+ROW 177: matched strategy=exact sample_query_repr='هد بند' pred_idx=177
+ROW 178: matched strategy=exact sample_query_repr='هدست دخترانه گربه ای' pred_idx=178
+ROW 179: matched strategy=exact sample_query_repr='هدلایت دنا توربو' pred_idx=179
+ROW 180: matched strategy=exact sample_query_repr='هندزفری انرجایزر' pred_idx=180
+ROW 181: matched strategy=exact sample_query_repr='هواوی نوا2پلاس' pred_idx=181
+ROW 182: matched strategy=exact sample_query_repr='هوداستیل سامسونگ' pred_idx=182
+ROW 183: matched strategy=exact sample_query_repr='هیالورونیک اسیدB5' pred_idx=183
+ROW 184: matched strategy=exact sample_query_repr='و شلوار بیرونی دختر نو جوان' pred_idx=184
+ROW 185: matched strategy=exact sample_query_repr='پایه دسته' pred_idx=185
+ROW 186: matched strategy=exact sample_query_repr='پایه کولر یخچال نیسان' pred_idx=186
+ROW 187: matched strategy=exact sample_query_repr='پرتابگر ساچمه فرفره های انفجاری' pred_idx=187
+ROW 188: matched strategy=exact sample_query_repr='پرولاکتین' pred_idx=188
+ROW 189: matched strategy=exact sample_query_repr='پلیستیشن ۵ شارژ' pred_idx=189
+ROW 190: matched strategy=exact sample_query_repr='پماد جانسون' pred_idx=190
+ROW 191: matched strategy=exact sample_query_repr='پولبیبر' pred_idx=191
+ROW 192: matched strategy=exact sample_query_repr='پچ ضد جوش' pred_idx=192
+ROW 193: matched strategy=exact sample_query_repr='پیراهن شلوار دخترانه' pred_idx=193
+ROW 194: matched strategy=exact sample_query_repr='چاقون زامندار' pred_idx=194
+ROW 195: matched strategy=exact sample_query_repr='چراغ emergency' pred_idx=195
+ROW 196: matched strategy=exact sample_query_repr='چراغ راهنما آپاچی 150' pred_idx=196
+ROW 197: matched strategy=exact sample_query_repr='چسب الومینیومی براق' pred_idx=197
+ROW 198: matched strategy=exact sample_query_repr='چمدان دخترانه طرح بستنی' pred_idx=198
+ROW 199: matched strategy=exact sample_query_repr='کارتل روغن' pred_idx=199
+
+
+Unmatched queries (first 50):
+'khord kon plastiki'
+'maghzi pak kon fabercastel'
+'آبجو طبی'
+'آلات جنسی برای سکس'
+'آلت می'
+'ادکلن پورن'
+'بادی اسپلش زنانه مدل sexy 2012'
+'بزرگ شدن آلت'
+'جاکلیدی کارت پاسور'
+'جعبه گا'
+'دستگاه مشروب'
+'سفت کننده الت تناسلی'
+'شیر پاستور ریزه ماجان'
+'فیلتر گازووئیل کشنده داف یورو۶'
+'مشک سکسی'
+'پک شش بازی تخته نرد منچ'
+'چراغ اقب ۲۰۶ ترح فاک'
+'کارت پاسور جمجمه حکم'
+'کرم ژل بزرگ کننده آلت'
+'گا ز رومیزی درسا'

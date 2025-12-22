@@ -1,5 +1,114 @@
-from typing import List, Optional
+# from typing import List, Optional
+# import pandas as pd
+# from normalizer import PersianNormalizer
+
+# def _combine_fields(row: pd.Series, fields: List[str]) -> str:
+#     """Concatenate multiple fields into a single string (skip NaNs)."""
+#     parts = []
+#     for f in fields:
+#         # use .get to avoid KeyError, then handle NaN
+#         v = row.get(f, '')
+#         if pd.isna(v):
+#             v = ''
+#         parts.append(str(v))
+#     # keep only non-empty parts and join with a space
+#     return ' '.join([p for p in parts if p])
+
+# def load_products(csv_path: str,
+#                   normalizer: PersianNormalizer,
+#                   text_fields: Optional[List[str]] = None,
+#                   encoding: str = 'utf-8') -> pd.DataFrame:
+#     """
+#     Load products.csv and produce DataFrame with:
+#       - p_id: string
+#       - text: concatenated raw fields (title + category + brand + attributes)
+#       - text_norm: normalized text (via normalizer.normalize)
+
+#     Parameters
+#     ----------
+#     csv_path : str
+#         path to products.csv
+#     normalizer : PersianNormalizer
+#         normalizer instance with `.normalize(text)` method
+#     text_fields : List[str], optional
+#         which columns to concatenate; defaults to ['title','category','brand','attributes']
+#     encoding : str
+#         file encoding (default 'utf-8')
+
+#     Returns
+#     -------
+#     pd.DataFrame
+#         DataFrame with columns ['p_id','text','text_norm']
+#     """
+#     if text_fields is None:
+#         text_fields = ['title', 'category', 'brand', 'attributes']
+
+#     df = pd.read_csv(csv_path, encoding=encoding)
+#     # strip possible whitespace in column names (some CSVs have trailing spaces)
+#     df.columns = [c.strip() for c in df.columns]
+
+#     # ensure we have the expected fields; if not, fall back to available ones
+#     available = set(df.columns)
+#     missing = [f for f in text_fields if f not in available]
+#     if missing:
+#         # reduce text_fields to intersection, but keep user notified
+#         present = [f for f in text_fields if f in available]
+#         if not present:
+#             raise ValueError(f"No text fields from {text_fields} found in CSV columns {list(df.columns)}")
+#         text_fields = present
+
+#     # Convert numeric IDs like '12345.0' -> '12345'
+#     if 'p_id' not in df.columns:
+#         raise ValueError("products.csv must contain 'p_id' column")
+#     df['p_id'] = df['p_id'].astype(str).str.replace(r'\.0$', '', regex=True)
+#     # Compose combined text
+#     df['text'] = df.apply(lambda r: _combine_fields(r, text_fields), axis=1)
+#     # Normalized text for downstream sparse/dense processing
+#     df['text_norm'] = df['text'].map(lambda s: normalizer.normalize(s) if pd.notna(s) else '')
+#     return df[['p_id', 'text', 'text_norm']]
+
+# def load_train_pairs(csv_path: str, encoding: str = 'utf-8') -> pd.DataFrame:
+#     """
+#     Load training query-product pairs.
+
+#     Returns DataFrame with columns ['query', 'p_id'] where p_id is string.
+#     Drops rows where query is null.
+#     """
+#     df = pd.read_csv(csv_path, encoding=encoding)
+#     df.columns = [c.strip() for c in df.columns]
+#     if 'query' not in df.columns or 'p_id' not in df.columns:
+#         raise ValueError("train_query_product_pairs.csv must contain 'query' and 'p_id' columns")
+#     df = df[['query', 'p_id']].copy()
+#     df['p_id'] = df['p_id'].astype(str).str.replace(r'\.0$', '', regex=True)
+#     df = df.dropna(subset=['query']).reset_index(drop=True)
+#     return df
+
+# def load_test_queries(csv_path: str, normalizer: PersianNormalizer, encoding: str = 'utf-8') -> pd.DataFrame:
+#     """
+#     Load test queries and provide normalized query text.
+
+#     Returns DataFrame with columns ['query_id', 'query', 'query_norm'].
+#     If 'query_id' missing, it will be created as a string index.
+#     """
+#     df = pd.read_csv(csv_path, encoding=encoding)
+#     df.columns = [c.strip() for c in df.columns]
+#     if 'query' not in df.columns:
+#         raise ValueError("test_queries.csv must contain a 'query' column")
+
+#     # preserve query_id column as-is if present; if not present, create one (as string)
+#     if 'query_id' not in df.columns:
+#         df = df.reset_index().rename(columns={'index': 'query_id'})
+#     # ensure query_id is string (helps to avoid dtype issues when saving)
+#     df['query_id'] = df['query_id'].astype(str)
+#     df['query_norm'] = df['query'].map(lambda s: normalizer.normalize(s) if pd.notna(s) else '')
+#     return df[['query_id', 'query', 'query_norm']]
+
+
+# data_loader.py (patched)
+from typing import List, Optional, Tuple, Dict
 import pandas as pd
+import io
+import chardet
 from normalizer import PersianNormalizer
 
 def _combine_fields(row: pd.Series, fields: List[str]) -> str:
@@ -14,36 +123,39 @@ def _combine_fields(row: pd.Series, fields: List[str]) -> str:
     # keep only non-empty parts and join with a space
     return ' '.join([p for p in parts if p])
 
+def _detect_encoding(path: str, default: str = 'utf-8') -> str:
+    """Try to detect file encoding; fallback to default."""
+    try:
+        with open(path, 'rb') as f:
+            raw = f.read(4096)
+        guess = chardet.detect(raw)
+        enc = guess.get('encoding') or default
+        return enc
+    except Exception:
+        return default
+
+def _read_csv_strict(path: str, encoding: Optional[str] = None, **kwargs) -> pd.DataFrame:
+    """Read CSV forcing string dtype and handling encoding detection fallback."""
+    if encoding is None:
+        encoding = _detect_encoding(path)
+    return pd.read_csv(path, encoding=encoding, dtype=str, keep_default_na=False, na_values=[""], **kwargs)
+
 def load_products(csv_path: str,
                   normalizer: PersianNormalizer,
                   text_fields: Optional[List[str]] = None,
-                  encoding: str = 'utf-8') -> pd.DataFrame:
+                  encoding: Optional[str] = None) -> pd.DataFrame:
     """
     Load products.csv and produce DataFrame with:
       - p_id: string
       - text: concatenated raw fields (title + category + brand + attributes)
       - text_norm: normalized text (via normalizer.normalize)
 
-    Parameters
-    ----------
-    csv_path : str
-        path to products.csv
-    normalizer : PersianNormalizer
-        normalizer instance with `.normalize(text)` method
-    text_fields : List[str], optional
-        which columns to concatenate; defaults to ['title','category','brand','attributes']
-    encoding : str
-        file encoding (default 'utf-8')
-
-    Returns
-    -------
-    pd.DataFrame
-        DataFrame with columns ['p_id','text','text_norm']
+    Also returns debug metadata via attributes on DataFrame: df._meta = {...}
     """
     if text_fields is None:
         text_fields = ['title', 'category', 'brand', 'attributes']
 
-    df = pd.read_csv(csv_path, encoding=encoding)
+    df = _read_csv_strict(csv_path, encoding=encoding)
     # strip possible whitespace in column names (some CSVs have trailing spaces)
     df.columns = [c.strip() for c in df.columns]
 
@@ -51,54 +163,81 @@ def load_products(csv_path: str,
     available = set(df.columns)
     missing = [f for f in text_fields if f not in available]
     if missing:
-        # reduce text_fields to intersection, but keep user notified
         present = [f for f in text_fields if f in available]
         if not present:
             raise ValueError(f"No text fields from {text_fields} found in CSV columns {list(df.columns)}")
         text_fields = present
 
-    # Convert numeric IDs like '12345.0' -> '12345'
+    # ensure p_id exists
     if 'p_id' not in df.columns:
         raise ValueError("products.csv must contain 'p_id' column")
-    df['p_id'] = df['p_id'].astype(str).str.replace(r'\.0$', '', regex=True)
-    # Compose combined text
+
+    # ensure p_id string and remove trailing .0
+    df['p_id'] = df['p_id'].fillna('').astype(str).str.replace(r'\.0$', '', regex=True)
+
+    # Compose text (safely) and normalize
     df['text'] = df.apply(lambda r: _combine_fields(r, text_fields), axis=1)
+    # force string and truncation if very long
+    df['text'] = df['text'].fillna('').astype(str)
+
     # Normalized text for downstream sparse/dense processing
-    df['text_norm'] = df['text'].map(lambda s: normalizer.normalize(s) if pd.notna(s) else '')
+    df['text_norm'] = df['text'].map(lambda s: normalizer.normalize(s) if s is not None else '')
+
+    # attach metadata for debugging
+    df._meta = {
+        'n_rows': len(df),
+        'n_unique_pids': df['p_id'].nunique(),
+        'text_fields_used': text_fields
+    }
     return df[['p_id', 'text', 'text_norm']]
 
-def load_train_pairs(csv_path: str, encoding: str = 'utf-8') -> pd.DataFrame:
+def load_train_pairs(csv_path: str, encoding: Optional[str] = None) -> pd.DataFrame:
     """
     Load training query-product pairs.
 
     Returns DataFrame with columns ['query', 'p_id'] where p_id is string.
-    Drops rows where query is null.
+    Drops rows where query is null (explicit).
     """
-    df = pd.read_csv(csv_path, encoding=encoding)
+    df = _read_csv_strict(csv_path, encoding=encoding)
     df.columns = [c.strip() for c in df.columns]
     if 'query' not in df.columns or 'p_id' not in df.columns:
         raise ValueError("train_query_product_pairs.csv must contain 'query' and 'p_id' columns")
     df = df[['query', 'p_id']].copy()
-    df['p_id'] = df['p_id'].astype(str).str.replace(r'\.0$', '', regex=True)
-    df = df.dropna(subset=['query']).reset_index(drop=True)
+    df['p_id'] = df['p_id'].fillna('').astype(str).str.replace(r'\.0$', '', regex=True)
+    # explicit drop for null/empty queries
+    df = df[df['query'].astype(str).str.strip() != ''].reset_index(drop=True)
+    # debug info
+    df._meta = {'n_rows': len(df), 'n_unique_queries': df['query'].nunique()}
     return df
 
-def load_test_queries(csv_path: str, normalizer: PersianNormalizer, encoding: str = 'utf-8') -> pd.DataFrame:
+def load_test_queries(csv_path: str, normalizer: PersianNormalizer, encoding: Optional[str] = None,
+                      keep_raw: bool = True) -> pd.DataFrame:
     """
     Load test queries and provide normalized query text.
 
     Returns DataFrame with columns ['query_id', 'query', 'query_norm'].
+    Preserves original query text under 'query' always; 'query_norm' is normalization output.
     If 'query_id' missing, it will be created as a string index.
     """
-    df = pd.read_csv(csv_path, encoding=encoding)
+    df = _read_csv_strict(csv_path, encoding=encoding)
     df.columns = [c.strip() for c in df.columns]
     if 'query' not in df.columns:
         raise ValueError("test_queries.csv must contain a 'query' column")
 
-    # preserve query_id column as-is if present; if not present, create one (as string)
+    # preserve original order and create query_id if missing
     if 'query_id' not in df.columns:
         df = df.reset_index().rename(columns={'index': 'query_id'})
-    # ensure query_id is string (helps to avoid dtype issues when saving)
+
     df['query_id'] = df['query_id'].astype(str)
-    df['query_norm'] = df['query'].map(lambda s: normalizer.normalize(s) if pd.notna(s) else '')
-    return df[['query_id', 'query', 'query_norm']]
+    # keep raw query (no trimming) for debugging; create a trimmed copy for normalization
+    df['query_raw'] = df['query'].astype(str)
+    # apply normalization but keep raw for alignment
+    df['query_norm'] = df['query_raw'].map(lambda s: normalizer.normalize(s) if s is not None else '')
+    # debug metadata
+    df._meta = {
+        'n_rows': len(df),
+        'n_unique_queries': df['query_raw'].nunique(),
+        'has_duplicates': df['query_raw'].nunique() != len(df)
+    }
+    # return columns in stable order
+    return df[['query_id', 'query_raw', 'query', 'query_norm']]
